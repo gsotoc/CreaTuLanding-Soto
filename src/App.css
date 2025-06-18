@@ -1,0 +1,48 @@
+header > div{
+    display: flex;
+    color: white;
+    background-color: black;
+    justify-content: center;
+}
+
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 10px 40px;
+    background-color: rgb(211, 208, 204);
+}
+
+nav > div:nth-child(2) {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 50px;
+}
+
+nav > div:nth-child(2) > div {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.navList {
+  display: flex;
+  gap: 15px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+li {
+  list-style: none;
+}
+
+footer {
+  display: flex;
+}
