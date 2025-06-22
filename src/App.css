@@ -1,8 +1,9 @@
-header > div{
+ #envios{
     display: flex;
     color: white;
     background-color: black;
     justify-content: center;
+    padding: 5px;
 }
 
 
@@ -67,5 +68,56 @@ li {
 .card img {
   max-width: 200px;
   height: auto;
+} 
+
+.layout.cart-open {
+  grid-template-areas:
+    "header header header"
+    "content content cart"
+    "footer footer footer";
+  grid-template-columns: 1fr 1fr 300px;
 }
 
+header { grid-area: header; }
+main { grid-area: content; }
+footer { grid-area: footer; }
+aside { grid-area: cart;} 
+
+aside {
+  padding-left: 15px;
+}
+
+article div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding-top: 10px;
+}
+
+.addToCart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background-color: black;
+  width: 40%;
+  height: 2rem;
+  border-radius: 5px;
+}
+
+.removeItem{
+  display: flex;
+  justify-content: center;
+  color: white;
+  background-color: red;
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.cartItem {
+  display: flex;
+  border: 1px solid black;
+  gap: 15px;
+}
