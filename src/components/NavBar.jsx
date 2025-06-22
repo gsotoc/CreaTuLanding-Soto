@@ -1,9 +1,12 @@
 import '../App.css';
+import CartWidget from './CartWidget';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import { faRightToBracket } from '@fortawesome/free-solid-svg-icons';
 
-function Header () {
+
+function NavBar () {
+
     return (
         <>
             <header>
@@ -25,7 +28,9 @@ function Header () {
                         </ul>
                         <div>
                             <input type="text" placeholder="Buscar" />
-                            <FontAwesomeIcon icon={faCartShopping} />
+                            <button onClick={onclick}>
+                                <FontAwesomeIcon icon={faCartShopping} />
+                            </button>
                             <FontAwesomeIcon icon={faRightToBracket} />
                         </div>
 
@@ -36,4 +41,4 @@ function Header () {
     );
 }
 
-export default Header;
+export default NavBar;

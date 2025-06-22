@@ -43,6 +43,29 @@ li {
   list-style: none;
 }
 
-footer {
-  display: flex;
+.listContainer {
+  max-height: 700px;
+  margin: 1em auto;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(230px, 1fr));
+  grid-gap: 20px;
 }
+
+.card {
+  background-color: white;
+  border: 1px solid #999;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 10px;
+  padding-bottom: 10px;
+  
+}
+
+.card img {
+  max-width: 200px;
+  height: auto;
+}
+

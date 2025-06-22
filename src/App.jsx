@@ -1,16 +1,14 @@
 import { useState } from 'react'
-import Header from './components/header'
-import Content from './components/Content'
-import Footer from './components/footer'
+import NavBar from './components/NavBar'
+import ItemListContainer from './components/ItemListContainer'
 import './App.css'
 
 function App() {
 
   return (
     <>
-      <Header/>
-      <Content/>
-      <Footer/>
+      <NavBar/>
+      <ItemListContainer/>
     </>
   )
 }
