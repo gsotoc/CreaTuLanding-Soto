@@ -29,7 +29,7 @@ function ItemListContainer({ addToCart }) {
             <article className="card" key={producto.id}>
               <header><p>{producto.title}</p></header>
               <img src={producto.image} alt={producto.description} />
-              <div>
+              <div className='productInfo'>
                 <p>${producto.price}</p>
                 <button className='addToCart' onClick={() => addToCart(producto)}>Agregar al carrito</button>
               </div>
