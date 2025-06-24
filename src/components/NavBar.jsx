@@ -3,6 +3,7 @@ import CartWidget from './CartWidget';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping, faRightToBracket } from '@fortawesome/free-solid-svg-icons';
 
+
 function NavBar({isCartOpen, setIsCartOpen, cartItems, removeFromCart, increaseCount, decreaseCount}) {
   return (
     <>
@@ -16,11 +17,8 @@ function NavBar({isCartOpen, setIsCartOpen, cartItems, removeFromCart, increaseC
           </div>
           <div>
             <ul className="navList">
-              <li><a href="">Camisas</a></li>
-              <li><a href="">Remeras</a></li>
-              <li><a href="">Pantalones</a></li>
-              <li><a href="">Bermudas</a></li>
-              <li><a href="">Calzado</a></li>
+              <li><a href="">Inicio</a></li>
+              <li><a href="">Categorias</a></li>
               <li><a href="">Ofertas</a></li>
             </ul>
             <div>
