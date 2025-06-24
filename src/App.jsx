@@ -1,7 +1,10 @@
 import { useState } from 'react'
+import { Routes, Route } from 'react-router-dom';
 import NavBar from './components/NavBar'
 import ItemListContainer from './components/ItemListContainer'
 import './App.css'
+
+
 
 function App() {
   const [isCartOpen, setIsCartOpen] = useState(false); //Estado para saber si el carrito está cerrado o abierto
