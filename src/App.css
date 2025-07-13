@@ -1,4 +1,20 @@
- #envios{
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+}
+
+#envios{
     display: flex;
     color: white;
     background-color: black;
@@ -6,53 +22,63 @@
     padding: 5px;
 }
 
-
 nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    padding: 10px 40px;
-    background-color: rgb(211, 208, 204);
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  background-color: rgb(211, 208, 204);
+  margin-bottom: 1rem;
 }
 
-nav > div:nth-child(2) {
+.navElements {
   display: flex;
-  flex-direction: row;
+  gap: 1rem;
+  justify-content: stretch;
   align-items: center;
-  gap: 50px;
+  margin-right: 1rem;
+
 }
 
-nav > div:nth-child(2) > div {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-
-.navList {
-  display: flex;
-  gap: 15px;
-  font-size: 18px;
-  font-weight: bold;
-}
-
-a {
-  text-decoration: none;
+.navElements a {
+  font-size: 1.2rem;
   color: black;
+  font-weight: bold;
+  text-decoration: none;
+  margin: 0 0.5rem;
 }
 
-li {
-  list-style: none;
+.navElements input {
+  margin: 0 2rem;
 }
 
-.listContainer {
-  max-height: 700px;
-  margin: 1em auto;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(230px, 1fr));
-  grid-gap: 20px;
+.content {
+  display: flex;
+  width: 100%;
+  gap: 5px;
+}
+
+.content section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+main {
+  flex: 3;
+  padding-left: 2rem;
+}
+
+aside {
+  flex: 1;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .card {
+  flex: 0 1 calc(33.333% - 20px);
   background-color: white;
   border: 1px solid #999;
   border-radius: 3px;
@@ -62,39 +88,12 @@ li {
   align-items: center;
   border-radius: 10px;
   padding-bottom: 10px;
-  
 }
 
 .card img {
   max-width: 200px;
   height: auto;
 } 
-
-.layout.cart-open {
-  grid-template-areas:
-    "header header header"
-    "content content cart"
-    "footer footer footer";
-  grid-template-columns: 1fr 1fr 300px;
-}
-
-header { grid-area: header; }
-main { grid-area: content; }
-footer { grid-area: footer; }
-aside { grid-area: cart;} 
-
-aside {
-  padding-left: 15px;
-}
-
-.productInfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  width: 100%;
-  padding-top: 10px;
-}
 
 .addToCart {
   display: flex;
@@ -105,6 +104,8 @@ aside {
   width: 40%;
   height: 2rem;
   border-radius: 5px;
+  width: fit-content;
+  padding: 0 5px;
 }
 
 .removeItem{
@@ -138,4 +139,22 @@ aside {
   display: flex;
   justify-content: center;
   padding: 10px;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(211, 208, 204);
+  padding: 1rem 2rem;
+}
+
+.footer-logo {
+  width: 80px;
+  height: auto;
+} 
+
+
+ul {
+  text-decoration: none;
+  color: black;
 }

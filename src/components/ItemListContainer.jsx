@@ -1,43 +1,30 @@
-import { useEffect, useState } from 'react';
+import CartWidget from './CartWidget';
+import ItemList from './itemList';
 
-function ItemListContainer({ addToCart }) {
-  const [productos, setProductos] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const obtenerProductos = async () => {
-      try {
-        const respuesta = await fetch('https://fakestoreapi.com/products');
-        const datos = await respuesta.json();
-        setProductos(datos);
-        setLoading(false);
-      } catch (error) {
-        console.error('Error:', error);
-        setLoading(false);
-      }
-    };
-    obtenerProductos();
-  }, []);
-
+function ItemListContainer({ productos, loading, cartItems, isCartOpen, setIsCartOpen, removeFromCart, increaseCount,decreaseCount, addToCart }) {
+  
   return (
-    <main>
+    <>
       {loading ? (
-        <p>Cargando productos...</p>
-      ) : (
-        <section className="listContainer">
-          {productos.map((producto) => (
-            <article className="card" key={producto.id}>
-              <header><p>{producto.title}</p></header>
-              <img src={producto.image} alt={producto.description} />
-              <div className='productInfo'>
-                <p>${producto.price}</p>
-                <button className='addToCart' onClick={() => addToCart(producto)}>Agregar al carrito</button>
-              </div>
-            </article>
-          ))}
-        </section>
-      )}
-    </main>
+          <p>Cargando productos...</p>
+        ) : (
+          <main>
+            <section className='cards-container'>
+              <ItemList items={productos} addToCart={addToCart}/>
+            </section>
+          </main>  
+        )}
+
+        {isCartOpen ? (
+          <CartWidget
+            items={cartItems}
+            onClose={() => setIsCartOpen(false)}
+            removeFromCart={removeFromCart}
+            increaseCount={increaseCount}
+            decreaseCount={decreaseCount}
+          />
+        ) : null}
+    </>
   );
 }
 

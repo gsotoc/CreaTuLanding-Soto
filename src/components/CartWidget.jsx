@@ -24,7 +24,12 @@ function CartWidget({ items, onClose, removeFromCart, increaseCount, decreaseCou
           ))}
         </div>
       )}
-      <button onClick={onClose}>Cerrar</button>
+      <div>
+        <button onClick={onClose}>Cerrar</button>
+        {/* <button onClick={onComprar}>Comprar</button> */}
+      </div>
+      
+
     </aside>
   );
 }
