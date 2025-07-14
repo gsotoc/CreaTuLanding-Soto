@@ -1,12 +1,24 @@
-# React + Vite
+Requisitos del proyecto
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+1- Implementación de React Router y creación de las distintas rutas necesarias para mostrar las vistas de nuestra app.
 
-Currently, two official plugins are available:
+2- División entre componentes contenedores encargados de manejar el estado y los efectos (ItemListContainer, ItemDetailContainer) y componentes de presentación, encargados del apartado visual (estructura de elementos, estilos, classNames, etc.)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+3- Los componentes contenedores harán un llamado asíncrono a "Promises" que resuelvan luego de un breve retardo los datos solicitados (listado de productos, un producto)
 
-## Expanding the ESLint configuration
+4 -Uso del método Array.map() y la prop "key" para listar todos los productos en el catálogo.
+(Array.map y la prop key fue usado en ItemList.jsx)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+5 - Uso del hook useParams() de react router para leer el segmento actual de la URL y mostrar el contenido correspondiente.
+(useParams() lo usé en ItemDetailContainer)
+
+
+Notas para mi!!
+1- Estoy usando el componente fetch data para hacer fetch tanto a 
+'https://dummyjson.com/products' como a 'https://dummyjson.com/products/categories' para ello, estoy usando 2 estados
+para guardar la información, tuve el problema que estos fetchs devuelven cosas distintas, uno devuelve un array de categorias y el de productos devuelve un objeto. Por eso usé el "Array.isarray()" en el else if
+
+
+2- En DataContext tengo toda la información del contecto además de las funciones para agregar al carrito y manejar toda la funcionalidad del carrito
+
+3- Para solucionar el problema de que luego de filtrar en categories en inicio se mostraba solo lo de esa categoría, estoy usando renderizado condicional y pasando productos en inicio ya que de momento quiero ver todos los productos y en categories tengo un filtro y paso productos filtrados 

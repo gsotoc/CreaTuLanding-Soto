@@ -1,12 +1,13 @@
 import '../App.css';
-import CartWidget from './CartWidget';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping, faRightToBracket } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
+import { useData } from './DataContext';
 
 
+function NavBar() {
+  const { isCartOpen, setIsCartOpen } = useData();
 
-function NavBar({isCartOpen, setIsCartOpen }) {
   return (
     <>
       <header className='NavBar'>
@@ -29,8 +30,6 @@ function NavBar({isCartOpen, setIsCartOpen }) {
           </div>
         </nav>
       </header>
-
-      
     </>
   );
 }
