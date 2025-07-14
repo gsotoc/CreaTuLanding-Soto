@@ -13,23 +13,6 @@ function App() {
   const count = 0;  
   const { productos, loading, isCartOpen, setIsCartOpen, cartItems, removeFromCart, increaseCount, decreaseCount, addToCart, setCartItems } = useData();
 
-  //Funcionalidad para filtrar con el input, funciona pero debería considerar filtrar por categorías también
-  //const [productosFiltrados, setProductosFiltrados] = useState(productos) //Estado para manejar los filtros
-  // useEffect(() => {
-    //   setProductosFiltrados(productos);
-    // }, [productos]);
-  // const filtrar = (e) => {
-
-
-  //   if(!e.target.value){
-  //     setProductosFiltrados(productos)
-  //   } else {
-  //     const datoIngresado = e.target.value.trim("").toLowerCase();
-  //     const itemsFiltrados = productos.filter((item)=>item.title.trim("").toLowerCase().includes(datoIngresado));
-  //     setProductosFiltrados(itemsFiltrados); 
-  //   }
-       
-  // }
 
 
   return (

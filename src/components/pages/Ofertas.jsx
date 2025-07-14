@@ -1,5 +1,9 @@
 function Ofertas () {
-    return <p>Estamos trabajando en ello!</p>
+    return 
+    <>
+        <h2>Error 404</h2>
+      <p>La página que estás buscando no existe.</p>
+    </>
 }
 
 export default Ofertas;
