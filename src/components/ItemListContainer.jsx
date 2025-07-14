@@ -1,8 +1,13 @@
 import CartWidget from './CartWidget';
-import ItemList from './itemList';
+import ItemList from './ItemList';
+import { useData } from './DataContext';
 
-function ItemListContainer({ productos, loading, cartItems, isCartOpen, setIsCartOpen, removeFromCart, increaseCount,decreaseCount, addToCart }) {
+function ItemListContainer() {
+
+  const { productos, loading, cartItems, isCartOpen, setIsCartOpen, removeFromCart, increaseCount,decreaseCount } = useData();
+
   
+
   return (
     <>
       {loading ? (
@@ -10,7 +15,7 @@ function ItemListContainer({ productos, loading, cartItems, isCartOpen, setIsCar
         ) : (
           <main>
             <section className='cards-container'>
-              <ItemList items={productos} addToCart={addToCart}/>
+              <ItemList productos={productos}/>
             </section>
           </main>  
         )}
