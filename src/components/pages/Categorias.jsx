@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { useData } from "../DataContext";
 import ItemList from "../ItemList";
+import CartWidget from "../CartWidget";
 import '../../App.css';
 
 function Categorias() {
-  const { categorias, productos, loading, productosFiltrados, setProductosFiltrados } = useData();
+  const { categorias, productos, loading, productosFiltrados, setProductosFiltrados, cartItems, isCartOpen, setIsCartOpen, removeFromCart, increaseCount, decreaseCount  } = useData();
   const [categoriaSeleccionada, setCategoriaSeleccionada] = useState("Todas");
 
 
@@ -53,6 +54,16 @@ function Categorias() {
           </section>
         )}
       </main>
+
+      {isCartOpen ? (
+          <CartWidget
+            items={cartItems}
+            onClose={() => setIsCartOpen(false)}
+            removeFromCart={removeFromCart}
+            increaseCount={increaseCount}
+            decreaseCount={decreaseCount}
+          />
+        ) : null}
     </div>
   );
 }
