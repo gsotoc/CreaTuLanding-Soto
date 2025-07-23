@@ -1,11 +1,11 @@
 import CartWidget from './CartWidget';
 import ItemList from './ItemList';
-import { useData } from './DataContext';
+import UseData from '../hooks/UseData';
+
 
 function ItemListContainer() {
 
-  const { productos, loading, cartItems, isCartOpen, setIsCartOpen, removeFromCart, increaseCount,decreaseCount } = useData();
-
+  const { productos, loading, cartItems, isCartOpen, setIsCartOpen, removeFromCart, increaseCount, decreaseCount } = UseData();
   
 
   return (
