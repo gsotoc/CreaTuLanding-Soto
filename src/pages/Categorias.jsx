@@ -1,11 +1,14 @@
 import { useState, useEffect } from "react";
-import { useData } from "../DataContext";
-import ItemList from "../ItemList";
-import '../../App.css';
+import UseData from "../hooks/UseData";
+import ItemList from "../components/ItemList";
+import CartWidget from "../components/CartWidget";
+import '../App.css';
 
 function Categorias() {
-  const { categorias, productos, loading, productosFiltrados, setProductosFiltrados } = useData();
+  const { categorias, productos, loading, cartItems, isCartOpen, setIsCartOpen, removeFromCart, increaseCount, decreaseCount  } = UseData();
   const [categoriaSeleccionada, setCategoriaSeleccionada] = useState("Todas");
+  const [productosFiltrados, setProductosFiltrados] = useState(); //Estado para filtrar productos
+
 
 
   useEffect(() => {
@@ -49,10 +52,20 @@ function Categorias() {
           <p>Cargando productos...</p>
         ) : (
           <section className="cards-container">
-            <ItemList productos={productosFiltrados}/>
+            <ItemList productosFiltrados={productosFiltrados}/>
           </section>
         )}
       </main>
+
+      {isCartOpen ? (
+          <CartWidget
+            items={cartItems}
+            onClose={() => setIsCartOpen(false)}
+            removeFromCart={removeFromCart}
+            increaseCount={increaseCount}
+            decreaseCount={decreaseCount}
+          />
+        ) : null}
     </div>
   );
 }

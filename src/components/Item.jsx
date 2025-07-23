@@ -1,9 +1,8 @@
 import { Link } from "react-router-dom";
-import { useData } from "./DataContext";
+import UseData from "../hooks/UseData";
 
 function Item ({data}) {
-
-    const { addToCart } = useData();
+    const { addToCart } = UseData();
     return <>
          <article className="card" key={data.id}>
             <header><p>{data.title}</p></header>

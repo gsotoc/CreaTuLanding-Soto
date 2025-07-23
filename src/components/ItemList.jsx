@@ -1,10 +1,10 @@
-import Item from "./item";
+import Item from "./Item";
 import { useLocation } from "react-router-dom";
-import { useData } from "./DataContext";
+import UseData from "../hooks/UseData";
 
-function ItemList( ) {
+function ItemList( { productosFiltrados }) {
   const location = useLocation();
-  const { productos, productosFiltrados} = useData();
+  const { productos } = UseData();
 
   const datosAMostrar = location.pathname === '/' ? productos : productosFiltrados;
 
