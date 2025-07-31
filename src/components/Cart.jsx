@@ -1,4 +1,4 @@
-import UseData from "../hooks/UseData";
+import UsarData from "../hooks/UsarData";
 
 function CartWidget({ onClose }) {
   const {
@@ -6,7 +6,7 @@ function CartWidget({ onClose }) {
     removeFromCart,
     increaseCount,
     decreaseCount
-  } = UseData();
+  } = UsarData();
 
   return (
     <aside>

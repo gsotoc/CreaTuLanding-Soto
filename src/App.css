@@ -146,6 +146,7 @@ footer {
   justify-content: space-between;
   background-color: rgb(211, 208, 204);
   padding: 1rem 2rem;
+  margin-top: 1rem;
 }
 
 .footer-logo {

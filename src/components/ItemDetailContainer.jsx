@@ -1,10 +1,10 @@
 import { useParams } from 'react-router-dom';
-import UseData from '../hooks/UseData';
+import UsarData from '../hooks/UsarData';
 import ItemDetail from './ItemDetail';
 
 function ItemDetailContainer() {
   const { id } = useParams();
-  const { productos } = UseData();
+  const { productos } = UsarData();
 
   const producto = productos.find((p) => p.id === parseInt(id));
 

@@ -1,14 +1,26 @@
-import { createContext, useState, useReducer } from "react";
-import GetData from "../services/GetData";
+import { createContext, useState, useReducer, useEffect } from "react";
+import GetData from "../hooks/GetData";
 import { cartReducer, cartInitialState } from "../hooks/CartReducer";
 
 export const DataContext = createContext();
 
 
-
 export default function DataProvider ({children}) {
-    const { productos, categorias, loading } = GetData(); //Uso la data traida desde la app en GetData.jsx 
-    const [isCartOpen, setIsCartOpen] = useState(false); //Estado para saber si el carrito está cerrado o abierto
+    const {
+      productos,
+      categorias,
+      productosFiltrados,
+      categoriaSeleccionada,
+      setCategoriaSeleccionada,
+      obtenerProductosFiltrados,
+      loading,
+      paginaActual,
+      siguientePagina,
+      paginaAnterior,
+      noHayMas
+    } = GetData();
+
+    const [isCartOpen, setIsCartOpen] = useState(false);
     const [cartItems, dispatch] = useReducer(cartReducer, cartInitialState);
 
     const addToCart = (producto) => {
@@ -27,12 +39,31 @@ export default function DataProvider ({children}) {
       dispatch({ type: "REMOVER_ITEM", payload: id });
     };
 
-    
-    return <>
-        <DataContext.Provider value={{  productos, categorias, loading, isCartOpen, setIsCartOpen, cartItems, dispatch, addToCart, increaseCount, decreaseCount, removeFromCart }}>
-        {children}
+    return <DataContext.Provider
+          value={{
+            productos,
+            productosFiltrados,
+            categorias,
+            loading,
+            categoriaSeleccionada,
+            setCategoriaSeleccionada,
+            obtenerProductosFiltrados,
+            isCartOpen,
+            setIsCartOpen,
+            cartItems,
+            dispatch,
+            addToCart,
+            increaseCount,
+            decreaseCount,
+            removeFromCart,
+            paginaActual,
+            siguientePagina,
+            paginaAnterior,
+            noHayMas,
+          }}
+        >
+          {children}
         </DataContext.Provider>
-    </> 
 }
 
 
