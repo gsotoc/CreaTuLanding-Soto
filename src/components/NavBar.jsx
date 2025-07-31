@@ -2,11 +2,11 @@ import '../App.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping, faRightToBracket } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
-import UseData from '../hooks/UseData';
+import UsarData from '../hooks/UsarData';
 
 
 function NavBar() {
-  const { isCartOpen, setIsCartOpen } = UseData();
+  const { isCartOpen, setIsCartOpen } = UsarData();
 
   return (
     <>

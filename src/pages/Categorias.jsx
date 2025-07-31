@@ -1,71 +1,70 @@
-import { useState, useEffect } from "react";
-import UseData from "../hooks/UseData";
+import UsarData from "../hooks/UsarData";
 import ItemList from "../components/ItemList";
-import CartWidget from "../components/CartWidget";
-import '../App.css';
+import CartWidget from "../components/Cart";
+import "../App.css";
 
 function Categorias() {
-  const { categorias, productos, loading, cartItems, isCartOpen, setIsCartOpen, removeFromCart, increaseCount, decreaseCount  } = UseData();
-  const [categoriaSeleccionada, setCategoriaSeleccionada] = useState("Todas");
-  const [productosFiltrados, setProductosFiltrados] = useState(); //Estado para filtrar productos
+  const {
+    productos,
+    productosFiltrados,
+    categorias,
+    categoriaSeleccionada,
+    setCategoriaSeleccionada,
+    obtenerProductosFiltrados,
+    loading,
+    cartItems,
+    isCartOpen,
+    setIsCartOpen,
+    removeFromCart,
+    increaseCount,
+    decreaseCount,
+  } = UsarData();
 
-
-
-  useEffect(() => {
-    if (categoriaSeleccionada === "Todas") {
-        setProductosFiltrados([...productos]);
-    } else {
-        const filtrados = productos.filter(
-        (item) =>
-            item.category.toLowerCase() === categoriaSeleccionada.toLowerCase()
-        );
-        setProductosFiltrados(filtrados);
-    }
-    }, [categoriaSeleccionada, productos]);
+  const handleCategoriaClick = (categoria) => {
+    setCategoriaSeleccionada(categoria);
+    obtenerProductosFiltrados(categoria);
+  };
 
   return (
     <div className="categorias-layout">
       <aside className="category-list">
         <h1>Categorías</h1>
         <ul>
+          {categorias.map((categoria, i) => (
             <li
-            className= {categoriaSeleccionada === "Todas" ? "category-elemento category-active" : "category-elemento"}
-            onClick={() => setCategoriaSeleccionada("Todas")}
+              key={i}
+              className={
+                categoriaSeleccionada === categoria
+                  ? "category-elemento category-active"
+                  : "category-elemento"
+              }
+              onClick={() => handleCategoriaClick(categoria)}
             >
-            Todas
+              {categoria}
             </li>
-            {categorias.map((categoria, i) => (
-            <li
-                key={i}
-                className= {categoriaSeleccionada === categoria.slug ? "category-elemento category-active" : "category-elemento"}
-                onClick={() => setCategoriaSeleccionada(categoria.slug)}
-            >
-                {categoria.name}
-            </li>
-            ))}
+          ))}
         </ul>
-        </aside>
-
+      </aside>
 
       <main>
         {loading ? (
           <p>Cargando productos...</p>
         ) : (
           <section className="cards-container">
-            <ItemList productosFiltrados={productosFiltrados}/>
+            <ItemList productos={productosAMostrar} />
           </section>
         )}
       </main>
 
-      {isCartOpen ? (
-          <CartWidget
-            items={cartItems}
-            onClose={() => setIsCartOpen(false)}
-            removeFromCart={removeFromCart}
-            increaseCount={increaseCount}
-            decreaseCount={decreaseCount}
-          />
-        ) : null}
+      {isCartOpen && (
+        <CartWidget
+          items={cartItems}
+          onClose={() => setIsCartOpen(false)}
+          removeFromCart={removeFromCart}
+          increaseCount={increaseCount}
+          decreaseCount={decreaseCount}
+        />
+      )}
     </div>
   );
 }

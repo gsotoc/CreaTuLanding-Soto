@@ -1,12 +1,11 @@
-import UseData from './hooks/UseData';
+import UsarData from './hooks/UsarData';
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
 import './App.css';
 import AppRouter from './routes/AppRouter';
 
 function App() {
-  const count = 0;  
-  const { productos, loading, isCartOpen, setIsCartOpen, cartItems, removeFromCart, increaseCount, decreaseCount, addToCart, setCartItems } = UseData();
+  const { isCartOpen, setIsCartOpen, cartItems, removeFromCart, increaseCount, decreaseCount } = UsarData();
 
 
 
