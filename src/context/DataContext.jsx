@@ -1,4 +1,4 @@
-import { createContext, useState, useReducer, useEffect } from "react";
+import { createContext, useState, useReducer } from "react";
 import GetData from "../hooks/GetData";
 import { cartReducer, cartInitialState } from "../hooks/CartReducer";
 
@@ -14,10 +14,12 @@ export default function DataProvider ({children}) {
       setCategoriaSeleccionada,
       obtenerProductosFiltrados,
       loading,
+      setLoading,
       paginaActual,
       siguientePagina,
       paginaAnterior,
-      noHayMas
+      noHayMas,
+      obtenerUnProducto,
     } = GetData();
 
     const [isCartOpen, setIsCartOpen] = useState(false);
@@ -45,6 +47,7 @@ export default function DataProvider ({children}) {
             productosFiltrados,
             categorias,
             loading,
+            setLoading,            
             categoriaSeleccionada,
             setCategoriaSeleccionada,
             obtenerProductosFiltrados,
@@ -60,6 +63,7 @@ export default function DataProvider ({children}) {
             siguientePagina,
             paginaAnterior,
             noHayMas,
+            obtenerUnProducto,
           }}
         >
           {children}

@@ -1,6 +1,7 @@
 import UsarData from "../hooks/UsarData";
+import ItemCount from "./ItemCount";
 
-function CartWidget({ onClose }) {
+function Cart({ onClose }) {
   const {
     cartItems,          
     removeFromCart,
@@ -24,9 +25,7 @@ function CartWidget({ onClose }) {
               </header>
 
               <div className="cartItemCount">
-                <button onClick={() => decreaseCount(item.id)} disabled={item.count <= 1}>-</button>
-                <p>{item.count}</p>
-                <button onClick={() => increaseCount(item.id)}>+</button>
+                <ItemCount id={item.id} count={item.count || 1} stock={item.stock} />
               </div>
 
               <div className="cartItemPrice">
@@ -44,4 +43,4 @@ function CartWidget({ onClose }) {
   );
 }
 
-export default CartWidget;
+export default Cart;

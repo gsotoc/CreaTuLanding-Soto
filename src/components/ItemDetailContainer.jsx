@@ -1,15 +1,30 @@
 import { useParams } from 'react-router-dom';
 import UsarData from '../hooks/UsarData';
 import ItemDetail from './ItemDetail';
+import { useEffect, useState } from 'react';
 
 function ItemDetailContainer() {
   const { id } = useParams();
-  const { productos } = UsarData();
+  const { obtenerUnProducto, loading, setLoading } = UsarData();
+  const [unProducto, setUnProducto] = useState(null);
 
-  const producto = productos.find((p) => p.id === parseInt(id));
+
+  useEffect(() => {
+    const cargarProducto = async () => {
+      setLoading(true);
+      const resultado = await obtenerUnProducto(id);
+      setUnProducto(resultado);
+      setLoading(false);
+    };
+
+    cargarProducto();
+  }, [id]);
+
+  if (loading) return <p>Cargando producto...</p>;
+  if (!unProducto) return <p>Producto no encontrado.</p>;
 
   return (
-    <ItemDetail producto={producto}/>
+    <ItemDetail producto={unProducto} />
   );
 }
 
