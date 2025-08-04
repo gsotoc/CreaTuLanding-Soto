@@ -1,4 +1,5 @@
-import CartWidget from './Cart';
+import { useEffect } from 'react';
+import Cart from './Cart';
 import ItemList from './ItemList';
 import UsarData from '../hooks/UsarData';
 import Paginacion from './Paginacion';
@@ -9,7 +10,10 @@ function ItemListContainer() {
 
   const {
     productos,
-    productosFiltrados,
+    categorias,
+    categoriaSeleccionada,
+    setCategoriaSeleccionada,
+    obtenerProductosFiltrados,
     loading,
     cartItems,
     isCartOpen,
@@ -22,8 +26,19 @@ function ItemListContainer() {
     paginaAnterior,
   } = UsarData();
 
-  const productosMostrados = location.pathname === '/categorias' ? productosFiltrados : productos;
 
+  useEffect(() => {
+    if (location.pathname === '/') {
+      obtenerProductosFiltrados("Todas");
+    }
+  }, [location.pathname]);
+
+  const handleCategoriaClick = (categoria) => {
+    setCategoriaSeleccionada(categoria);
+    obtenerProductosFiltrados(categoria);
+  };
+
+  const esRutaCategorias = location.pathname === '/categorias';
 
   return (
     <>
@@ -31,28 +46,51 @@ function ItemListContainer() {
         <p>Cargando productos...</p>
       ) : (
         <main>
-          
           <Paginacion
             paginaActual={paginaActual}
             siguientePagina={siguientePagina}
             paginaAnterior={paginaAnterior}
           />
 
-          <section className='cards-container'>
-            <ItemList productos={productosMostrados} />
-          </section>  
+          <div className='main-content'> 
+            {esRutaCategorias && (
+              <aside className="category-list">
+                <h1>Categorías</h1>
+                <ul>
+                  {categorias.map((categoria, i) => (
+                    <li
+                      key={i}
+                      className={
+                        categoriaSeleccionada === categoria
+                          ? "category-elemento category-active"
+                          : "category-elemento"
+                      }
+                      onClick={() => handleCategoriaClick(categoria)}
+                    >
+                      {categoria}
+                    </li>
+                  ))}
+                </ul>
+              </aside>
+            )}
+
+            <section className='cards-container'>
+              <ItemList productos={productos} />
+            </section>
+
+          </div>
+
 
           <Paginacion
             paginaActual={paginaActual}
             siguientePagina={siguientePagina}
             paginaAnterior={paginaAnterior}
           />
-            
         </main>
       )}
 
       {isCartOpen && (
-        <CartWidget
+        <Cart
           items={cartItems}
           onClose={() => setIsCartOpen(false)}
           removeFromCart={removeFromCart}

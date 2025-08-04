@@ -6,7 +6,7 @@ export function cartReducer(state, action) {
       const exists = state.find(item => item.id === action.payload.id);
       if (exists) {
         return state.map(item =>
-          item.id === action.payload.id
+          (item.id === action.payload.id && item.count < item.stock) 
             ? { ...item, count: item.count + 1 }
             : item
         );
@@ -20,7 +20,7 @@ export function cartReducer(state, action) {
 
     case "INCREMENTAR_CUENTA":
       return state.map(item =>
-        item.id === action.payload
+        (item.id === action.payload && item.count < item.stock)
           ? { ...item, count: item.count + 1 }
           : item
       );
@@ -28,7 +28,7 @@ export function cartReducer(state, action) {
     case "DECREMENTAR_CUENTA":
       return state
         .map(item =>
-          (item.id === action.payload && item.count > 0)
+          item.id === action.payload && item.count > 0
             ? { ...item, count: item.count - 1 }
             : item
         )
