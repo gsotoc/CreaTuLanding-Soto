@@ -1,32 +1,4 @@
 CreaTuLanding-Soto
-CreaTuLanding-Soto is a study project created to learn React. This is my first project using React, focusing on building a simple landing page. The project is primarily built with JavaScript, along with some CSS and HTML.
-
-Features
-Simple landing page structure
-React components to organize content
-Custom styles using CSS
-Getting Started
-Clone the repository:
-bash
-git clone https://github.com/gsotoc/CreaTuLanding-Soto.git
-Install dependencies:
-bash
-npm install
-Start the development server:
-bash
-npm start
-Purpose
-This project is for learning and practicing React. Feedback and suggestions are welcome!
-
-License
-This project is for educational purposes.
-
-Would you like to add more details or personal notes? If not, I can update your README.md with this content.
-
-Can you do it again? With more info?
-Absolutely! Here’s a richer README.md for your CreaTuLanding-Soto project, including sections for features, technologies, installation, usage, learning goals, and more.
-
-CreaTuLanding-Soto
 CreaTuLanding-Soto is a personal study project created to learn React and front-end web development. This is my first project with React, and its main goal is to build a customizable landing page while practicing modern web technologies.
 
 ✨ Features
