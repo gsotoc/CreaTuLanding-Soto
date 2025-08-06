@@ -1,12 +1,12 @@
 import '../App.css';
-import { ShoppingCartIcon, LogInIcon, LogIn } from 'lucide-react';
+import { ShoppingCartIcon, LogIn } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import UsarData from '../hooks/UsarData';
 
 
 function NavBar() {
   const { isCartOpen, setIsCartOpen, cartItems } = UsarData();
-  const productosEnCarrito = cartItems.length;
+  const productosEnCarrito = cartItems.reduce((total, item) => total + item.count, 0);
   
   return (
     <>

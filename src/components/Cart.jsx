@@ -40,8 +40,6 @@ function Cart({ onClose }) {
           <h2><span>Total: $ <CartTotal /></span></h2>
       </div>
 
-
-
       <div className="cartActions">
         <button className="closeCart" onClick={onClose}>Cerrar</button>
         <button className="comprar">

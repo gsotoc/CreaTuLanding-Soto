@@ -5,7 +5,7 @@ import UsarData from '../hooks/UsarData';
 import '../App.css';
 
 function CheckoutForm () {
-  const { cartItems } = UsarData();
+  const { cartItems, clearCart } = UsarData();
 
   const [compraRealizada, setCompraRealizada] = useState(false);
 
@@ -14,9 +14,10 @@ function CheckoutForm () {
     email: "",
     direccion: "",
     metodoPago: "tarjeta",
-    totalAPagar: CartTotal(),
     productosComprados: cartItems
   });
+
+  const [idCompra, setIdCompra] = useState(null);
 
 
   const handleChange = (e) => {
@@ -24,12 +25,21 @@ function CheckoutForm () {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit =  async (e) => {
     e.preventDefault();
     const db = getFirestore();
     const ventas = collection(db, "ventas");
-    addDoc(ventas, formData)
+    const docRef = await addDoc(ventas, formData);
+    clearCart();
     setCompraRealizada(true);
+    setFormData({
+      nombre: "",
+      email: "",
+      direccion: "",
+      metodoPago: "tarjeta",
+      productosComprados: cartItems
+    });
+    setIdCompra(docRef.id);
   };
 
   return (
@@ -37,6 +47,7 @@ function CheckoutForm () {
       {compraRealizada ? (    
         <div className="confirmacion-compra">
           <h2>¡Gracias por tu compra!</h2>
+          <p>ID de la compra: {idCompra}</p>
           <p>Hemos recibido tu orden y te enviaremos un correo de confirmación pronto.</p>
         </div>
       ) : (
