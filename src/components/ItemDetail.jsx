@@ -1,6 +1,7 @@
 import '../App.css';
 import Cart from './Cart';
 import UsarData from '../hooks/UsarData';
+import ItemCount from './ItemCount';
 
 function ItemDetail ({ producto }) {
 
@@ -22,7 +23,13 @@ function ItemDetail ({ producto }) {
                         <p>Descuento: {producto.discountPercentage}%</p>
                         <p>Stock: {producto.stock}</p>
                         <p>Rating del producto: {producto.rating}/5</p>
-                        <button className="addToCart" onClick={() => addToCart(producto)}>Agregar al carrito</button>
+                        {!cartItems.some(item => item.id === producto.id) && (
+                        <ItemCount
+                            stock={producto.stock}
+                            count={1}
+                            onAdd={(cantidad) => addToCart({ ...producto, count: cantidad })}
+                        />
+                        )}
                     </div>
                 </section>
             </article>

@@ -4,14 +4,18 @@ export function cartReducer(state, action) {
   switch (action.type) {
     case "AGREGAR_ITEM": {
       const exists = state.find(item => item.id === action.payload.id);
+
       if (exists) {
         return state.map(item =>
-          (item.id === action.payload.id && item.count < item.stock) 
-            ? { ...item, count: item.count + 1 }
+          item.id === action.payload.id
+            ? {
+                ...item,
+                count: Math.min(item.count + action.payload.count, item.stock),
+              }
             : item
         );
       } else {
-        return [...state, { ...action.payload, count: 1 }];
+        return [...state, { ...action.payload }];
       }
     }
 

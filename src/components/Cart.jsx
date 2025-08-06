@@ -1,12 +1,12 @@
 import UsarData from "../hooks/UsarData";
 import ItemCount from "./ItemCount";
+import CartTotal from "../hooks/CartTotal";
+import { Link } from "react-router-dom";
 
 function Cart({ onClose }) {
   const {
     cartItems,          
     removeFromCart,
-    increaseCount,
-    decreaseCount
   } = UsarData();
 
   return (
@@ -25,11 +25,11 @@ function Cart({ onClose }) {
               </header>
 
               <div className="cartItemCount">
-                <ItemCount id={item.id} count={item.count || 1} stock={item.stock} />
+                <ItemCount id={item.id} count={item.count} stock={item.stock} />
               </div>
 
               <div className="cartItemPrice">
-                <p>Total: $ {(item.price * item.count).toFixed(2)}</p>
+                <p>Subtotal: $ {(item.price * item.count).toFixed(2)}</p>
               </div>
             </article>
           ))}
@@ -37,7 +37,16 @@ function Cart({ onClose }) {
       )}
 
       <div>
-        <button onClick={onClose}>Cerrar</button>
+          <h2><span>Total: $ <CartTotal /></span></h2>
+      </div>
+
+
+
+      <div className="cartActions">
+        <button className="closeCart" onClick={onClose}>Cerrar</button>
+        <button className="comprar">
+          <Link to="/checkout">Comprar</Link>
+        </button>
       </div>
     </aside>
   );
