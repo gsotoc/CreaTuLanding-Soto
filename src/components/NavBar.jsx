@@ -1,13 +1,13 @@
 import '../App.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCartShopping, faRightToBracket } from '@fortawesome/free-solid-svg-icons';
+import { ShoppingCartIcon, LogIn } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import UsarData from '../hooks/UsarData';
 
 
 function NavBar() {
-  const { isCartOpen, setIsCartOpen } = UsarData();
-
+  const { isCartOpen, setIsCartOpen, cartItems } = UsarData();
+  const productosEnCarrito = cartItems.reduce((total, item) => total + item.count, 0);
+  
   return (
     <>
       <header className='NavBar'>
@@ -24,9 +24,10 @@ function NavBar() {
             <Link to="/ofertas">Ofertas</Link>
             <input type="text" placeholder="Buscar"/>
             <button onClick={() => setIsCartOpen(!isCartOpen)}>
-              <FontAwesomeIcon icon={faCartShopping} />
+              <ShoppingCartIcon size={22} color="black" />
+              <span className="cartCount">{productosEnCarrito}</span>
             </button>
-            <FontAwesomeIcon icon={faRightToBracket} />
+            <button><LogIn/></button>
           </div>
         </nav>
       </header>

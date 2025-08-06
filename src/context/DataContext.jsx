@@ -23,7 +23,9 @@ export default function DataProvider ({children}) {
     } = GetData();
 
     const [isCartOpen, setIsCartOpen] = useState(false);
-    const [cartItems, dispatch] = useReducer(cartReducer, cartInitialState);
+    const [state, dispatch] = useReducer(cartReducer, cartInitialState);
+    const cartItems = state.items;
+
 
     const addToCart = (producto) => {
       dispatch({ type: "AGREGAR_ITEM", payload: producto });
@@ -40,6 +42,11 @@ export default function DataProvider ({children}) {
     const removeFromCart = (id) => {
       dispatch({ type: "REMOVER_ITEM", payload: id });
     };
+
+    function clearCart() {
+      dispatch({ type: "CLEAR_CART" });
+    }
+
 
     return <DataContext.Provider
           value={{
@@ -59,6 +66,7 @@ export default function DataProvider ({children}) {
             increaseCount,
             decreaseCount,
             removeFromCart,
+            clearCart,
             paginaActual,
             siguientePagina,
             paginaAnterior,

@@ -1,40 +1,65 @@
-export const cartInitialState = [];
+export const cartInitialState = {
+  items: [],
+};
 
 export function cartReducer(state, action) {
   switch (action.type) {
     case "AGREGAR_ITEM": {
-      const exists = state.find(item => item.id === action.payload.id);
+      const exists = state.items.find(item => item.id === action.payload.id);
+
       if (exists) {
-        return state.map(item =>
-          (item.id === action.payload.id && item.count < item.stock) 
-            ? { ...item, count: item.count + 1 }
-            : item
-        );
+        return {
+          ...state,
+          items: state.items.map(item =>
+            item.id === action.payload.id
+              ? {
+                  ...item,
+                  count: Math.min(item.count + action.payload.count, item.stock),
+                }
+              : item
+          ),
+        };
       } else {
-        return [...state, { ...action.payload, count: 1 }];
+        return {
+          ...state,
+          items: [...state.items, { ...action.payload }],
+        };
       }
     }
 
     case "REMOVER_ITEM":
-      return state.filter(item => item.id !== action.payload);
+      return {
+        ...state,
+        items: state.items.filter(item => item.id !== action.payload),
+      };
 
     case "INCREMENTAR_CUENTA":
-      return state.map(item =>
-        (item.id === action.payload && item.count < item.stock)
-          ? { ...item, count: item.count + 1 }
-          : item
-      );
+      return {
+        ...state,
+        items: state.items.map(item =>
+          item.id === action.payload && item.count < item.stock
+            ? { ...item, count: item.count + 1 }
+            : item
+        ),
+      };
 
     case "DECREMENTAR_CUENTA":
-      return state
-        .map(item =>
+      return {
+        ...state,
+        items: state.items.map(item =>
           item.id === action.payload && item.count > 0
             ? { ...item, count: item.count - 1 }
             : item
-        )
+        ),
+      };
+
+    case "CLEAR_CART":
+      return {
+        ...state,
+        items: [],
+      };
 
     default:
       return state;
   }
 }
-
