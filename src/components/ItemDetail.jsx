@@ -2,18 +2,28 @@ import '../App.css';
 import Cart from './Cart';
 import UsarData from '../hooks/UsarData';
 import ItemCount from './ItemCount';
+import { SquareX } from 'lucide-react';
+import { User } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 function ItemDetail ({ producto }) {
 
     const {cartItems, isCartOpen, setIsCartOpen, removeFromCart, increaseCount, decreaseCount, addToCart} = UsarData();
+    const Navigate = useNavigate();
+
+    const handleCerrar = () => {
+        Navigate('/');
+    }
 
     return <>
         <main className="main-detail-card">
             <article className="card details">
+                <button onClick={handleCerrar} className='btn-cerrar'><SquareX color="white"/></button>
                 <header>
                     <h2>{producto.title}</h2>
                 </header>
                 <section>
+                    <button></button>
                     <div className='details-image'>
                         <img src={producto.images[0]} alt={producto.description} />
                         <p>{producto.description}</p>     

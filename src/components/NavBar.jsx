@@ -1,6 +1,6 @@
 import '../App.css';
 import { ShoppingCartIcon, LogIn } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import UsarData from '../hooks/UsarData';
 
 
@@ -19,9 +19,9 @@ function NavBar() {
             <img src="https://res.cloudinary.com/dwicisnc3/image/upload/v1750030231/logo_ehk61z.png" alt="Logo del ecommerce" />
           </div>
           <div className='navElements'>
-            <Link to="/">Inicio</Link>
-            <Link to ="/categorias">Categorias</Link>
-            <Link to="/ofertas">Ofertas</Link>
+            <NavLink className={({isActive})=>(isActive ? "navLink activo" : "navLink")} to="/">Inicio</NavLink>
+            <NavLink className={({isActive})=>(isActive ? "navLink activo" : "navLink")} to ="/categorias">Categorias</NavLink>
+            <NavLink className={({isActive})=>(isActive ? "navLink activo" : "navLink")} to="/ofertas">Ofertas</NavLink>
             <input type="text" placeholder="Buscar"/>
             <button onClick={() => setIsCartOpen(!isCartOpen)}>
               <ShoppingCartIcon size={22} color="black" />
