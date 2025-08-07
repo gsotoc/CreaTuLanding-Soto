@@ -30,6 +30,7 @@ nav {
   margin-bottom: 1rem;
 }
 
+
 .navElements {
   display: flex;
   gap: 1rem;
@@ -39,12 +40,17 @@ nav {
 
 }
 
-.navElements a {
+.navLink {
   font-size: 1.2rem;
   color: black;
   font-weight: bold;
   text-decoration: none;
   margin: 0 0.5rem;
+}
+
+.activo {
+  font-weight: bold;
+  color: rgb(26, 26, 167);
 }
 
 .navElements input {
@@ -89,10 +95,13 @@ aside {
 .card-container {
   display: flex;
   flex-wrap: wrap;
+  
 }
 
 .card {
   flex: 0 1 calc(33.333% - 20px);
+  position: relative;;
+  max-height: 500px;
   background-color: white;
   box-shadow: inset 0px 0px 1px 1px rgba(0, 0, 0, 0.2);
   display: flex;
@@ -140,6 +149,7 @@ aside {
 
 .cartItem {
   display: flex;
+  position: relative;
   flex-direction: column;
   border: 1px solid black;
 }
@@ -243,6 +253,7 @@ ul {
 
 .details {
   display: flex;
+  position: relative;
   justify-content: center;
   gap: 10px;
   flex-direction: column;
@@ -296,4 +307,25 @@ ul {
   display: flex;
   justify-content: space-between;
   gap: 1rem;
+}
+
+.btn-cerrar {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 4px; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.btn-cerrar svg {
+  width: 100%;
+  height: 100%;
 }

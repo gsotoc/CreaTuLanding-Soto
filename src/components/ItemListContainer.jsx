@@ -42,52 +42,50 @@ function ItemListContainer() {
 
   return (
     <>
-      {loading ? (
-        <p>Cargando productos...</p>
-      ) : (
-        <main>
-          <Paginacion
-            paginaActual={paginaActual}
-            siguientePagina={siguientePagina}
-            paginaAnterior={paginaAnterior}
-          />
+      <main>
+        <Paginacion
+          paginaActual={paginaActual}
+          siguientePagina={siguientePagina}
+          paginaAnterior={paginaAnterior}
+        />
 
-          <div className='main-content'> 
-            {esRutaCategorias && (
-              <aside className="category-list">
-                <h1>Categorías</h1>
-                <ul>
-                  {categorias.map((categoria, i) => (
-                    <li
-                      key={i}
-                      className={
-                        categoriaSeleccionada === categoria
-                          ? "category-elemento category-active"
-                          : "category-elemento"
-                      }
-                      onClick={() => handleCategoriaClick(categoria)}
-                    >
-                      {categoria}
-                    </li>
-                  ))}
-                </ul>
-              </aside>
-            )}
+        <div className="main-content">
+          {esRutaCategorias && (
+            <aside className="category-list">
+              <h1>Categorías</h1>
+              <ul>
+                {categorias.map((categoria, i) => (
+                  <li
+                    key={i}
+                    className={
+                      categoriaSeleccionada === categoria
+                        ? "category-elemento category-active"
+                        : "category-elemento"
+                    }
+                    onClick={() => handleCategoriaClick(categoria)}
+                  >
+                    {categoria}
+                  </li>
+                ))}
+              </ul>
+            </aside>
+          )}
 
-            <section className='cards-container'>
+          <section className="cards-container">
+            {loading ? (
+              <p>Cargando productos...</p>
+            ) : (
               <ItemList productos={productos} />
-            </section>
+            )}
+          </section>
+        </div>
 
-          </div>
-
-
-          <Paginacion
-            paginaActual={paginaActual}
-            siguientePagina={siguientePagina}
-            paginaAnterior={paginaAnterior}
-          />
-        </main>
-      )}
+        <Paginacion
+          paginaActual={paginaActual}
+          siguientePagina={siguientePagina}
+          paginaAnterior={paginaAnterior}
+        />
+      </main>
 
       {isCartOpen && (
         <Cart
@@ -98,6 +96,7 @@ function ItemListContainer() {
           decreaseCount={decreaseCount}
         />
       )}
+
     </>
   );
 }

@@ -2,6 +2,7 @@ import UsarData from "../hooks/UsarData";
 import ItemCount from "./ItemCount";
 import CartTotal from "../hooks/CartTotal";
 import { Link } from "react-router-dom";
+import { SquareX } from "lucide-react";
 
 function Cart({ onClose }) {
   const {
@@ -21,7 +22,7 @@ function Cart({ onClose }) {
             <article className="cartItem" key={item.id}>
               <header>
                 {item.title}
-                <button className="removeItem" onClick={() => removeFromCart(item.id)}>x</button>
+                <button className="btn-cerrar" onClick={() => removeFromCart(item.id)}><SquareX/></button>
               </header>
 
               <div className="cartItemCount">
