@@ -54,7 +54,6 @@ function ItemCount({ id, count, stock, onAdd }) {
       <div className="count-manager">
         <button onClick={handleDecrease}>-</button>
         <span>{localCount}</span>
-        {/* 🔥 Botón ya NO deshabilitado */}
         <button onClick={handleIncrease}>+</button>
       </div>
 
