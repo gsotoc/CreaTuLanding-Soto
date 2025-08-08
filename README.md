@@ -31,7 +31,7 @@ Para correr este proyecto en tu máquina local:
 
 3. **Inicia el servidor de desarrollo**
    ```bash
-   npm start
+   npm run dev
    ```
    La aplicación estará disponible en [http://localhost:3000](http://localhost:3000)
 
