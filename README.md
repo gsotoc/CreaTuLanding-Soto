@@ -1,49 +1,64 @@
-CreaTuLanding-Soto
-CreaTuLanding-Soto is a personal study project created to learn React and front-end web development. This is my first project with React, and its main goal is to build a customizable landing page while practicing modern web technologies.
+ProyectoFinalSoto es un proyecto de estudio personal creado para aprender React y desarrollo web frontend. Es mi primer proyecto con React, enfocado en construir una landing page personalizable y practicar tecnologías modernas del desarrollo web.
 
-✨ Features
-Landing Page: A simple, customizable template for personal or business use.
-React Components: Organized code using reusable components.
-Responsive Design: Adapts to different screen sizes.
-Custom Styling: Styled with CSS for easy modifications.
-Easy to Extend: Add new sections or features as you learn.
-🚀 Technologies Used
-React (JavaScript)
-CSS
-HTML
-[Optional: List any libraries you use, e.g. React Router, styled-components, etc.]
-🏁 Getting Started
-To run this project locally:
+## ✨ Características
 
-Clone the repository
+- **Landing Page:** Plantilla simple y personalizable para uso personal o de negocio.
+- **Componentes en React:** Código organizado usando componentes reutilizables.
+- **Diseño Responsivo:** Se adapta a diferentes tamaños de pantalla.
+- **Estilos Personalizados:** Utiliza CSS para facilitar modificaciones.
+- **Fácil de Extender:** Puedes agregar nuevas secciones o funcionalidades conforme aprendes.
 
-bash
-git clone https://github.com/gsotoc/CreaTuLanding-Soto.git
-cd CreaTuLanding-Soto
-Install dependencies
+## 🚀 Tecnologías Utilizadas
 
-bash
-npm install
-Start the development server
+- **React** (JavaScript)
+- **CSS**
+- **HTML**
 
-bash
-npm start
-The app will be available at http://localhost:3000
+## 🏁 Cómo empezar
 
-📚 Learning Goals
-Practice building React components and managing state.
-Learn how to style applications and make them responsive.
-Understand the basics of project structure and version control with GitHub.
-Experiment with adding new features and improving user experience.
-📝 Usage
-Feel free to use this code as a starting point for your own landing page or as a reference for learning React!
+Para correr este proyecto en tu máquina local:
 
-🤝 Contributing
-This is a personal learning project, but suggestions, ideas, and feedback are welcome! Please open an issue or pull request.
+1. **Clona el repositorio**
+   ```bash
+   git clone https://github.com/gsotoc/ProyectoFinalSoto.git
+   cd ProyectoFinalSoto
+   ```
 
-📄 License
-This project is intended for educational purposes and does not have an open-source license yet.
+2. **Instala las dependencias**
+   ```bash
+   npm install
+   ```
 
-🙏 Acknowledgments
-Thanks to the React community and all the free resources online that help beginners learn and grow!
-Would you like any additional sections, such as screenshots, demo links, or contact info? If this looks good, I can update your README.md file directly in your repository.
+3. **Inicia el servidor de desarrollo**
+   ```bash
+   npm start
+   ```
+   La aplicación estará disponible en [http://localhost:3000](http://localhost:3000)
+
+ 4. **Agregar la API Key de Firestore**
+   Podrás encontrar la API Key en el mensaje donde entregué la consigna.
+
+   
+
+## 📚 Objetivos de Aprendizaje
+
+- Practicar la construcción de componentes en React y manejo de estados.
+- Aprender a estilizar aplicaciones y hacerlas responsivas.
+- Entender la estructura básica de proyectos y el control de versiones con GitHub.
+- Experimentar con nuevas funcionalidades y mejorar la experiencia del usuario.
+
+## 📝 Uso
+
+¡Puedes usar este código como base para tu propia landing page o como referencia para aprender React!
+
+## 🤝 Contribuciones
+
+Este es un proyecto personal de aprendizaje, pero cualquier sugerencia, idea o feedback es bienvenido. ¡Puedes abrir un issue o pull request!
+
+## 📄 Licencia
+
+Este proyecto está destinado a fines educativos y no tiene una licencia open source definida aún.
+
+## 🙏 Agradecimientos
+
+- Gracias a la comunidad de React y a todos los recursos gratuitos en línea que ayudan a los principiantes a aprender y crecer.
